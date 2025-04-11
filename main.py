@@ -19,10 +19,6 @@ parser.add_argument('--steps', type=int, default=6000,
                     help='Total steps to modify the original image')
 parser.add_argument('--save-samples', type=bool, default=True,
                     action=BooleanOptionalAction, help='Save sample images or not')
-parser.add_argument('--save-model', type=bool, default=True,
-                    action=BooleanOptionalAction, help='Save the model or not')
-parser.add_argument('--model-name', type=str, default='model.pth',
-                    help='The model name')
 
 args = parser.parse_args()
 
@@ -82,8 +78,6 @@ def main():
             loop.set_postfix(total_loss=total_loss.item())
             if args.save_samples:
                 save_image(generated, f'images/generated/gen_img_{step}.png')
-            if args.save_model:
-                torch.save(model.state_dict(), args.model_name)
 
 if __name__ == '__main__':
     main()
