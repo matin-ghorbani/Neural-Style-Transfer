@@ -31,7 +31,7 @@ img_loader = transforms.Compose([
 TOTAL_STEPS = args.steps
 
 def load_img(img_name):
-    img = Image.open(img_name)
+    img = Image.open(img_name).convert('RGB')
     img = img_loader(img).unsqueeze(0)
     return img.to(DEVICE)
 
