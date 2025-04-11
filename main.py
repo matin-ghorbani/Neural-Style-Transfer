@@ -78,6 +78,8 @@ def main():
             loop.set_postfix(total_loss=total_loss.item())
             if args.save_samples:
                 save_image(generated, f'images/generated/gen_img_{step}.png')
+    
+    save_image(generated, f'images/generated/gen_img_{TOTAL_STEPS}.png')
 
 if __name__ == '__main__':
     main()
