@@ -15,6 +15,8 @@ parser.add_argument('--org-img', type=str, required=True,
                     help='The path of original image to apply the style on')
 parser.add_argument('--style-img', type=str, required=True,
                     help='The path of style image to apply on the original image')
+parser.add_argument('--steps', type=int, default=6000,
+                    help='Total steps to modify the original image')
 parser.add_argument('--save-samples', type=bool, default=True,
                     action=BooleanOptionalAction, help='Save sample images or not')
 parser.add_argument('--save-model', type=bool, default=True,
@@ -30,6 +32,7 @@ img_loader = transforms.Compose([
     # transforms.Normalize((.5, .5, .5), (.5, .5))
 ])
 
+TOTAL_STEPS = args.steps
 
 def load_img(img_name):
     img = Image.open(img_name)
